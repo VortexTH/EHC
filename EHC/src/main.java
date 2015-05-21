@@ -330,12 +330,12 @@ public class main {
 		hashcat.add(separator_11);
 		
 		mask = new JTextField();
-		mask.setBounds(433, 229, 316, 22);
+		mask.setBounds(434, 240, 271, 22);
 		hashcat.add(mask);
 		mask.setColumns(10);
 		
-		JLabel lblEnterACustom = new JLabel("<html>Enter a custom mask here. If no max <br> length is specified above, this mask's<br>lentgh will be adapted</html>");
-		lblEnterACustom.setBounds(434, 179, 200, 39);
+		JLabel lblEnterACustom = new JLabel("<html>Enter a custom mask here. If no max <br> length is specified above, this mask's<br>lentgh will be adapted. You may also<br> choose a .hcmask file by browsing</html>");
+		lblEnterACustom.setBounds(434, 179, 200, 56);
 		hashcat.add(lblEnterACustom);
 		
 		JButton btnCheatSheet = new JButton("Cheat Sheet");
@@ -437,7 +437,7 @@ public class main {
 				stringpassmin = lengthmin.getText();
 				
 				if(icm = true){
-					stringIncrementMode = "";
+					stringIncrementMode = "--increment";
 				}
 				
 				
@@ -472,6 +472,10 @@ public class main {
 		});
 		engineer.setBounds(443, 317, 286, 63);
 		hashcat.add(engineer);
+		
+		JButton button = new JButton("...");
+		button.setBounds(715, 240, 34, 23);
+		hashcat.add(button);
 		
 		}
 }
