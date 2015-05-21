@@ -444,6 +444,8 @@ public class main {
 					stringIncrementMode = "--increment";
 				}
 				
+				
+				
 				//sets hash type
 				if(stringHashType == "MD5"){
 					hashcode = "0";
