@@ -421,7 +421,9 @@ public class main {
 		JButton engineer = new JButton("Reverse Engineer");
 		engineer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-								
+				
+				String hashcode = "";
+				
 				stringHashFile = hashFile.getText();
 				stringOutputFile = outputhFile.getText();
 				stringWordlist1 = wordlist1.getText();
@@ -433,14 +435,411 @@ public class main {
 				stringSeparator = separatorField.getText();
 				stringmode = mode.getSelectedItem().toString();
 				stringOutputFormat = outputFormat.getSelectedItem().toString();
+				stringHashType = hashType.getSelectedItem().toString();
 				stringpassmax = lengthmax.getText();
 				stringpassmin = lengthmin.getText();
 				
+				//sets increment flag
 				if(icm = true){
 					stringIncrementMode = "--increment";
 				}
 				
+				//sets hash type
+				if(stringHashType == "MD5"){
+					hashcode = "0";
+				}
 				
+				else if (stringHashType == "md5($pass.$salt)"){
+					hashcode = "10";
+				}
+				
+				else if (stringHashType == "md5($salt.$pass)"){
+					hashcode = "20";
+				}
+				
+				else if (stringHashType == "md5(unicode($pass).$salt)"){
+					hashcode = "30";
+				}
+				
+				else if (stringHashType == "md5($salt.unicode($pass))"){
+					hashcode = "40";
+				}
+				
+				else if (stringHashType == "HMAC-MD5 (key = $pass)"){
+					hashcode = "50";
+				}
+				
+				else if (stringHashType == "HMAC-MD5 (key = $salt)"){
+					hashcode = "60";
+				}
+				
+				else if (stringHashType == "SHA1"){
+					hashcode = "100";
+				}
+				
+				else if (stringHashType == "sha1($pass.$salt)"){
+					hashcode = "110";
+				}
+				
+				else if (stringHashType == "sha1($salt.$pass)"){
+					hashcode = "120";
+				}
+				
+				else if (stringHashType == "sha1(unicode($pass).$salt)"){
+					hashcode = "130";
+				}
+				
+				else if (stringHashType == "sha1($salt.unicode($pass))"){
+					hashcode = "140";
+				}
+				
+				else if (stringHashType == "HMAC-SHA1 (key = $pass)"){
+					hashcode = "150";
+				}
+				
+				else if (stringHashType == "HMAC-SHA1 (key = $salt)"){
+					hashcode = "160";
+				}
+				
+				else if (stringHashType == "MySQL"){
+					hashcode = "200";
+				}
+				
+				else if (stringHashType == "MySQL4.1/MySQL5"){
+					hashcode = "300";
+				}
+				
+				else if (stringHashType == "phpass, MD5(WordPress), MD5(phpBB3)"){
+					hashcode = "400";
+				}
+				
+				else if (stringHashType == "md5crypt, MD5(Unix), FreeBSD MD5, Cisco-IOS MD5"){
+					hashcode = "500";
+				}
+				
+				else if (stringHashType == "SHA-1(Django)"){
+					hashcode = "800";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "900";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1000";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1100";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1410";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1420";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1430";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1440";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1450";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1460";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1600";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1700";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1710";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1720";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1730";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1740";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1750";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1760";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1800";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2500";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2600";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3200";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3300";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3500";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3610";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3710";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3720";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3810";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3910";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4010";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4110";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4210";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4300";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4500";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4600";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4700";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "4800";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5000";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5100";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5200";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5300";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5500";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5600";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5700";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "5800";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "6300";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "6400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "6500";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "6700";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "6900";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7000";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7100";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7200";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7300";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7400";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "9999";
+				}
+				
+				//Application Hashes
+				else if (stringHashType == "MD4"){
+					hashcode = "11";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "21";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "101";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "111";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "112";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "121";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "122";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "123";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "131";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "132";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "141";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1441";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1711";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1722";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "1731";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2611";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2711";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "2811";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "3721";
+				}
+				
+				else if (stringHashType == "MD4"){
+					hashcode = "7600";
+				}
+
+
+			
 				
 				
 				
