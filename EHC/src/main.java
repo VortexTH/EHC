@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -18,11 +19,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
 
 import javax.swing.JCheckBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -335,6 +339,13 @@ public class main {
 		hashcat.add(lblEnterACustom);
 		
 		JButton btnCheatSheet = new JButton("Cheat Sheet");
+		btnCheatSheet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(null, "<html>?l = abcdefghijklmnopqrstuvwxyz<br>?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>?d = 0123456789<br>?s = !#$%&'()*+,-./:;<=>?@[]^_`{|}~<br>?a = ?l?u?d?</html>");
+				
+			}
+		});
 		btnCheatSheet.setBounds(644, 191, 105, 23);
 		hashcat.add(btnCheatSheet);
 				
