@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -21,6 +22,8 @@ import java.awt.Font;
 
 import javax.swing.JCheckBox;
 
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -182,7 +185,7 @@ public class main {
 		hashcat.add(hashType);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(106, 96, 356, 12);
+		separator.setBounds(106, 96, 353, 12);
 		hashcat.add(separator);
 		
 		JLabel lblWordlist = new JLabel("Wordlist 1:");
@@ -294,11 +297,11 @@ public class main {
 		hashcat.add(separator_4);
 		
 		JLabel lblLength_1 = new JLabel("Length");
-		lblLength_1.setBounds(467, 86, 37, 22);
+		lblLength_1.setBounds(463, 86, 37, 22);
 		hashcat.add(lblLength_1);
 		
 		JSeparator separator_5 = new JSeparator();
-		separator_5.setBounds(502, 96, 257, 12);
+		separator_5.setBounds(498, 96, 261, 12);
 		hashcat.add(separator_5);
 		
 		JSeparator separator_6 = new JSeparator();
@@ -434,7 +437,7 @@ public class main {
 				
 			}
 		});
-		btnCheatSheet.setBounds(644, 179, 105, 23);
+		btnCheatSheet.setBounds(620, 179, 104, 23);
 		hashcat.add(btnCheatSheet);
 				
 		JSeparator separator_3 = new JSeparator();
@@ -531,11 +534,11 @@ public class main {
 		JButton CopyToClipboard = new JButton("Copy To Clipboard");
 		CopyToClipboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				
-				
+								
+				StringSelection copied = new StringSelection(commandOut.getText());
+			    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			    clipboard.setContents (copied, copied);
+								
 			}
 		});
 		CopyToClipboard.setBounds(10, 554, 161, 23);
@@ -624,431 +627,321 @@ public class main {
 				//sets hash type
 				if(stringHashType == "MD5"){
 					hashcode = "0";
-				}
-				
+				}				
 				else if (stringHashType == "md5($pass.$salt)"){
 					hashcode = "10";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.$pass)"){
 					hashcode = "20";
-				}
-				
+				}				
 				else if (stringHashType == "md5(unicode($pass).$salt)"){
 					hashcode = "30";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.unicode($pass))"){
 					hashcode = "40";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-MD5 (key = $pass)"){
 					hashcode = "50";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-MD5 (key = $salt)"){
 					hashcode = "60";
-				}
-				
+				}				
 				else if (stringHashType == "SHA1"){
 					hashcode = "100";
-				}
-				
+				}				
 				else if (stringHashType == "sha1($pass.$salt)"){
 					hashcode = "110";
-				}
-				
+				}				
 				else if (stringHashType == "sha1($salt.$pass)"){
 					hashcode = "120";
-				}
-				
+				}				
 				else if (stringHashType == "sha1(unicode($pass).$salt)"){
 					hashcode = "130";
-				}
-				
+				}				
 				else if (stringHashType == "sha1($salt.unicode($pass))"){
 					hashcode = "140";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA1 (key = $pass)"){
 					hashcode = "150";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA1 (key = $salt)"){
 					hashcode = "160";
-				}
-				
+				}				
 				else if (stringHashType == "MySQL"){
 					hashcode = "200";
-				}
-				
+				}				
 				else if (stringHashType == "MySQL4.1/MySQL5"){
 					hashcode = "300";
-				}
-				
+				}				
 				else if (stringHashType == "phpass, MD5(WordPress), MD5(phpBB3)"){
 					hashcode = "400";
-				}
-				
+				}				
 				else if (stringHashType == "md5crypt, MD5(Unix), FreeBSD MD5, Cisco-IOS MD5"){
 					hashcode = "500";
-				}
-				
+				}				
 				else if (stringHashType == "SHA-1(Django)"){
 					hashcode = "800";
-				}
-				
+				}				
 				else if (stringHashType == "MD4"){
 					hashcode = "900";
-				}
-				
+				}				
 				else if (stringHashType == "NTLM"){
 					hashcode = "1000";
-				}
-				
+				}				
 				else if (stringHashType == "Domain Cached Credentials, mscash"){
 					hashcode = "1100";
-				}
-				
+				}				
 				else if (stringHashType == "SHA256"){
 					hashcode = "1400";
-				}
-				
+				}				
 				else if (stringHashType == "sha256($pass.$salt)"){
 					hashcode = "1410";
-				}
-				
+				}				
 				else if (stringHashType == "sha256($salt.$pass)"){
 					hashcode = "1420";
-				}
-				
+				}				
 				else if (stringHashType == "sha256(unicode($pass).$salt)"){
 					hashcode = "1430";
-				}
-				
+				}				
 				else if (stringHashType == "sha256($salt.unicode($pass))"){
 					hashcode = "1440";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA256 (key = $pass)"){
 					hashcode = "1450";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA256 (key = $salt)"){
 					hashcode = "1460";
-				}
-				
+				}				
 				else if (stringHashType == "md5apr1, MD5(APR), Apache MD5"){
 					hashcode = "1600";
-				}
-				
+				}				
 				else if (stringHashType == "SHA512"){
 					hashcode = "1700";
-				}
-				
+				}				
 				else if (stringHashType == "sha512($pass.$salt)"){
 					hashcode = "1710";
-				}
-				
+				}				
 				else if (stringHashType == "sha512($salt.$pass)"){
 					hashcode = "1720";
-				}
-				
+				}				
 				else if (stringHashType == "sha512(unicode($pass).$salt)"){
 					hashcode = "1730";
-				}
-				
+				}				
 				else if (stringHashType == "sha512($salt.unicode($pass))"){
 					hashcode = "1740";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA512 (key = $pass)"){
 					hashcode = "1750";
-				}
-				
+				}				
 				else if (stringHashType == "HMAC-SHA512 (key = $salt)"){
 					hashcode = "1760";
-				}
-				
+				}				
 				else if (stringHashType == "SHA-512(Unix)"){
 					hashcode = "1800";
-				}
-				
+				}				
 				else if (stringHashType == "Cisco-PIX MD5"){
 					hashcode = "2400";
-				}
-				
+				}				
 				else if (stringHashType == "WPA/WPA2"){
 					hashcode = "2500";
-				}
-				
+				}				
 				else if (stringHashType == "Double MD5"){
 					hashcode = "2600";
-				}
-				
+				}				
 				else if (stringHashType == "bcrypt, Blowfish(OpenBSD)"){
 					hashcode = "3200";
-				}
-				
+				}				
 				else if (stringHashType == "MD5(Sun)"){
 					hashcode = "3300";
-				}
-				
+				}				
 				else if (stringHashType == "md5(md5(md5($pass)))"){
 					hashcode = "3500";
-				}
-				
+				}				
 				else if (stringHashType == "md5(md5($salt).$pass)"){
 					hashcode = "3610";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.md5($pass))"){
 					hashcode = "3710";
-				}
-				
+				}				
 				else if (stringHashType == "md5($pass.md5($salt))"){
 					hashcode = "3720";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.$pass.$salt)"){
 					hashcode = "3810";
-				}
-				
+				}				
 				else if (stringHashType == "md5(md5($pass).md5($salt))"){
 					hashcode = "3910";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.md5($salt.$pass))"){
 					hashcode = "4010";
-				}
-				
+				}				
 				else if (stringHashType == "md5($salt.md5($pass.$salt))"){
 					hashcode = "4110";
-				}
-				
+				}				
 				else if (stringHashType == "md5($username.0.$pass)"){
 					hashcode = "4210";
-				}
-				
+				}				
 				else if (stringHashType == "md5(strtoupper(md5($pass)))"){
 					hashcode = "4300";
-				}
-				
+				}				
 				else if (stringHashType == "md5(sha1($pass))"){
 					hashcode = "4400";
-				}
-				
+				}				
 				else if (stringHashType == "sha1(sha1($pass))"){
 					hashcode = "4500";
-				}
-				
+				}				
 				else if (stringHashType == "sha1(sha1(sha1($pass)))"){
 					hashcode = "4600";
-				}
-				
+				}				
 				else if (stringHashType == "sha1(md5($pass))"){
 					hashcode = "4700";
-				}
-				
+				}				
 				else if (stringHashType == "MD5(Chap)"){
 					hashcode = "4800";
-				}
-				
+				}				
 				else if (stringHashType == "SHA-3(Keccak)"){
 					hashcode = "5000";
-				}
-				
+				}				
 				else if (stringHashType == "Half MD5"){
 					hashcode = "5100";
-				}
-				
+				}				
 				else if (stringHashType == "Password Safe SHA-256"){
 					hashcode = "5200";
-				}
-				
+				}				
 				else if (stringHashType == "IKE-PSK MD5"){
 					hashcode = "5300";
-				}
-				
+				}				
 				else if (stringHashType == "IKE-PSK SHA1"){
 					hashcode = "5400";
-				}
-				
+				}				
 				else if (stringHashType == "NetNTLMv1-VANILLA / NetNTLMv1-ESS"){
 					hashcode = "5500";
-				}
-				
+				}				
 				else if (stringHashType == "NetNTLMv2"){
 					hashcode = "5600";
-				}
-				
+				}				
 				else if (stringHashType == "Cisco-IOS SHA256"){
 					hashcode = "5700";
-				}
-				
+				}				
 				else if (stringHashType == "Samsung Android Password/PIN"){
 					hashcode = "5800";
-				}
-				
+				}				
 				else if (stringHashType == "AIX {smd5}"){
 					hashcode = "6300";
-				}
-				
+				}				
 				else if (stringHashType == "AIX {ssha256}"){
 					hashcode = "6400";
-				}
-				
+				}				
 				else if (stringHashType == "AIX {ssha512}"){
 					hashcode = "6500";
-				}
-				
+				}				
 				else if (stringHashType == "AIX {ssha1}"){
 					hashcode = "6700";
-				}
-				
+				}				
 				else if (stringHashType == "GOST, GOST R 34.11-94"){
 					hashcode = "6900";
-				}
-				
+				}				
 				else if (stringHashType == "Fortigate (FortiOS)"){
 					hashcode = "7000";
-				}
-				
+				}				
 				else if (stringHashType == "OS X v10.8"){
 					hashcode = "7100";
-				}
-				
+				}				
 				else if (stringHashType == "GRUB 2"){
 					hashcode = "7200";
-				}
-				
+				}				
 				else if (stringHashType == "IPMI2 RAKP HMAC-SHA1"){
 					hashcode = "7300";
-				}
-				
+				}				
 				else if (stringHashType == "sha256crypt, SHA256(Unix)"){
 					hashcode = "7400";
-				}
-				
+				}				
 				else if (stringHashType == "Plaintext"){
 					hashcode = "9999";
-				}
+				}				
 				
 				//Application Hashes
 				else if (stringHashType == "Joomla"){
 					hashcode = "11";
-				}
-				
+				}				
 				else if (stringHashType == "osCommerce, xt:Commerce"){
 					hashcode = "21";
-				}
-				
+				}				
 				else if (stringHashType == "nsldap, SHA-1(Base64), Netscape LDAP SHA"){
 					hashcode = "101";
-				}
-				
+				}				
 				else if (stringHashType == "nsldaps, SSHA-1(Base64), Netscape LDAP SSHA"){
 					hashcode = "111";
-				}
-				
+				}				
 				else if (stringHashType == "Oracle 11g"){
 					hashcode = "112";
-				}
-				
+				}				
 				else if (stringHashType == "SMF > v1.1"){
 					hashcode = "121";
-				}
-				
+				}				
 				else if (stringHashType == "OS X v10.4, v10.5, v10.6"){
 					hashcode = "122";
-				}
-				
+				}				
 				else if (stringHashType == "EPi"){
 					hashcode = "123";
-				}
-				
+				}				
 				else if (stringHashType == "MSSQL(2000)"){
 					hashcode = "131";
-				}
-				
+				}				
 				else if (stringHashType == "MSSQL(2005)"){
 					hashcode = "132";
-				}
-				
+				}				
 				else if (stringHashType == "EPiServer 6.x < v4"){
 					hashcode = "141";
-				}
-				
+				}				
 				else if (stringHashType == "EPiServer 6.x > v4"){
 					hashcode = "1441";
-				}
-				
+				}				
 				else if (stringHashType == "SSHA-512(Base64), LDAP {SSHA512}"){
 					hashcode = "1711";
-				}
-				
+				}				
 				else if (stringHashType == "OS X v10.7"){
 					hashcode = "1722";
-				}
-				
+				}				
 				else if (stringHashType == "MSSQL(2012)"){
 					hashcode = "1731";
-				}
-				
+				}				
 				else if (stringHashType == "vBulletin < v3.8.5"){
 					hashcode = "2611";
-				}
-				
+				}				
 				else if (stringHashType == "vBulletin > v3.8.5"){
 					hashcode = "2711";
-				}
-				
+				}				
 				else if (stringHashType == "IPB2+, MyBB1.2+"){
 					hashcode = "2811";
-				}
-				
+				}				
 				else if (stringHashType == "WebEdition CMS"){
 					hashcode = "3721";
-				}
-				
+				}				
 				else if (stringHashType == "Redmine Project Management Web App"){
 					hashcode = "7600";
-				}
-				
+				}				
 				else {
 					JOptionPane.showMessageDialog(null, "Please Select a Hash Type!");
-				}
-
-
-			
+				}			
 				
 				
 				
-				
-				
-				
-				
-				
-				
-				
-				
+				//Creates and sets command string
 				if(attackmode == "0"){
 					stringCommand = "hashcat-" + client + " " + "--hash" + " " + hashcode + " " + "--attack-mode" + " " + attackmode + " " + "--outfile" + " " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3;
 				}
 				
 				if(attackmode == "3"){
 					stringCommand = "hashcat-" + client + " " + "--hash" + " " + hashcode + " " + "--attack-mode" + " "  + attackmode + " " + "--outfile" + " " + stringOutputFile + " " + stringHashFile + " " + stringMask;
-				}
-				
+				}				
 				
 				commandOut.setText(stringCommand);
 				
 				
-				//TODO WORK THIS OUT!!!
-				//Should get Runtime, Creates command array and executes cmd, passing command array "commands" as argument to cmd
-				Runtime rt = Runtime.getRuntime();
 				
-				//String[] commands = new String[]{"cmd.exe /c start \""  + stringCommand + "\"cmd.exe /c start"};
+				//Gets Runtime, executes cmd, passing "stringCommand" to the process.
+				Runtime rt = Runtime.getRuntime();
 				
 				try {
 					rt.exec("cmd.exe /c start cmd.exe /k \""+stringCommand+"\"");
@@ -1056,10 +949,7 @@ public class main {
 					JOptionPane.showMessageDialog(null, e);
 					e.printStackTrace();
 				}
-				
-				
-				
-				
+							
 				
 			}
 		});
@@ -1070,9 +960,5 @@ public class main {
 		lblClient.setBounds(633, 15, 46, 14);
 		hashcat.add(lblClient);
 		
-		
-		
-		
-		
 		}
-}
+	}
