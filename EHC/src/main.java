@@ -35,6 +35,9 @@ import java.io.File;
 import java.io.IOException;
 
 
+
+
+
 public class main {
 	
 	public String stringHashFile = "";
@@ -431,7 +434,7 @@ public class main {
 				
 			}
 		});
-		btnCheatSheet.setBounds(644, 191, 105, 23);
+		btnCheatSheet.setBounds(644, 179, 105, 23);
 		hashcat.add(btnCheatSheet);
 				
 		JSeparator separator_3 = new JSeparator();
@@ -481,6 +484,24 @@ public class main {
 		JSeparator separator_9 = new JSeparator();
 		separator_9.setBounds(115, 455, 644, 12);
 		hashcat.add(separator_9);
+						
+		JButton btna = new JButton("8a");
+		btna.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {				
+				mask.setText("?a?a?a?a?a?a?a?a");				
+			}
+		});
+		btna.setBounds(620, 213, 47, 23);
+		hashcat.add(btna);
+		
+		JButton btn45 = new JButton("8l");
+		btn45.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mask.setText("?l?l?l?l?l?l?l?l");
+			}
+		});
+		btn45.setBounds(677, 212, 47, 23);
+		hashcat.add(btn45);
 		
 		JButton button = new JButton("...");
 		button.addActionListener(new ActionListener() {
@@ -508,6 +529,15 @@ public class main {
 		commandOut.setColumns(10);
 		
 		JButton CopyToClipboard = new JButton("Copy To Clipboard");
+		CopyToClipboard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+				
+			}
+		});
 		CopyToClipboard.setBounds(10, 554, 161, 23);
 		hashcat.add(CopyToClipboard);
 		
@@ -1039,6 +1069,10 @@ public class main {
 		JLabel lblClient = new JLabel("Client:");
 		lblClient.setBounds(633, 15, 46, 14);
 		hashcat.add(lblClient);
+		
+		
+		
+		
 		
 		}
 }
