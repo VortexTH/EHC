@@ -146,6 +146,8 @@ public class main {
 		InputFileBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -201,6 +203,8 @@ public class main {
 		wordlist1Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -255,6 +259,8 @@ public class main {
 		wordlist2Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -278,6 +284,8 @@ public class main {
 		wordlist3Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -329,6 +337,8 @@ public class main {
 		rule1Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -352,6 +362,8 @@ public class main {
 		rule2Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -375,6 +387,8 @@ public class main {
 		rule3Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -398,6 +412,8 @@ public class main {
 		rule4Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -462,6 +478,8 @@ public class main {
 		outputFileBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -510,6 +528,8 @@ public class main {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
+				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+				fileChooser.setCurrentDirectory(loc);
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
@@ -929,11 +949,11 @@ public class main {
 				
 				//Creates and sets command string
 				if(attackmode == "0"){
-					stringCommand = "hashcat-" + client + " " + "--hash" + " " + hashcode + " " + "--attack-mode" + " " + attackmode + " " + "--outfile" + " " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3;
+					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " " +"-o " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3;
 				}
 				
 				if(attackmode == "3"){
-					stringCommand = "hashcat-" + client + " " + "--hash" + " " + hashcode + " " + "--attack-mode" + " "  + attackmode + " " + "--outfile" + " " + stringOutputFile + " " + stringHashFile + " " + stringMask;
+					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " " + "-o " + stringOutputFile + " " + stringHashFile + " " + stringMask;
 				}				
 				
 				commandOut.setText(stringCommand);
