@@ -949,11 +949,11 @@ public class main {
 				
 				//Creates and sets command string
 				if(attackmode == "0"){
-					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " " +"-o " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3;
+					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode  +" -o " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3 + " -r" + stringRule1 + " " + stringRule2 + " " + stringRule3 + " " + stringRule4 + " " ;
 				}
 				
 				if(attackmode == "3"){
-					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " " + "-o " + stringOutputFile + " " + stringHashFile + " " + stringMask;
+					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " -o " + stringOutputFile + " " + stringHashFile + " " + stringMask;
 				}				
 				
 				commandOut.setText(stringCommand);
