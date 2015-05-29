@@ -48,10 +48,10 @@ public class main {
 	public String stringWordlist1 = "";
 	public String stringWordlist2 = "";
 	public String stringWordlist3 = "";
+	public String stringWordlist4 = "";
+	public String stringWordlist5 = "";
 	public String stringRule1 = "";
-	public String stringRule2 = "";
-	public String stringRule3 = "";
-	public String stringRule4 = "";
+	public String stringRule2 = "";	
 	public String stringSeparator = "";
 	public String stringmode = "";
 	public String stringOutputFormat = "";
@@ -74,11 +74,11 @@ public class main {
 	private JTextField wordlist3;
 	private JTextField rule1;
 	private JTextField rule2;
-	private JTextField rule3;
-	private JTextField rule4;
 	private JTextField outputhFile;
 	private JTextField commandOut;
 	private JTextField mask;
+	private JTextField wordlist4;
+	private JTextField wordlist5;
 
 	/**
 	 * Launch the application.
@@ -313,28 +313,28 @@ public class main {
 		hashcat.add(separator_5);
 		
 		JSeparator separator_6 = new JSeparator();
-		separator_6.setBounds(88, 223, 335, 12);
+		separator_6.setBounds(88, 281, 335, 12);
 		hashcat.add(separator_6);
 		
 		JLabel lblRules = new JLabel("Rules");
-		lblRules.setBounds(59, 213, 47, 22);
+		lblRules.setBounds(59, 271, 47, 22);
 		hashcat.add(lblRules);
 		
 		JSeparator separator_7 = new JSeparator();
-		separator_7.setBounds(0, 223, 57, 12);
+		separator_7.setBounds(0, 281, 57, 12);
 		hashcat.add(separator_7);
 		
-		JLabel lblRule = new JLabel("Rule 1:");
-		lblRule.setBounds(5, 240, 52, 22);
-		hashcat.add(lblRule);
+		JLabel lblRule_2 = new JLabel("Rule 1:");
+		lblRule_2.setBounds(5, 304, 52, 22);
+		hashcat.add(lblRule_2);
 		
 		rule1 = new JTextField();
-		rule1.setBounds(67, 240, 248, 22);
-		hashcat.add(rule1);
 		rule1.setColumns(10);
+		rule1.setBounds(67, 304, 248, 22);
+		hashcat.add(rule1);
 		
-		JButton rule1Browse = new JButton("Browse");
-		rule1Browse.addActionListener(new ActionListener() {
+		JButton rule3Browse = new JButton("Browse");
+		rule3Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
 				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
@@ -346,67 +346,17 @@ public class main {
 		        }
 			}
 		});
-		rule1Browse.setBounds(325, 240, 89, 23);
-		hashcat.add(rule1Browse);
-		
-		JLabel lblRule_1 = new JLabel("Rule 2:");
-		lblRule_1.setBounds(5, 271, 52, 22);
-		hashcat.add(lblRule_1);
-		
-		rule2 = new JTextField();
-		rule2.setColumns(10);
-		rule2.setBounds(67, 271, 248, 22);
-		hashcat.add(rule2);
-		
-		JButton rule2Browse = new JButton("Browse");
-		rule2Browse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser fileChooser = new JFileChooser();
-				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-				fileChooser.setCurrentDirectory(loc);
-		        int returnValue = fileChooser.showOpenDialog(null);
-		        if (returnValue == JFileChooser.APPROVE_OPTION) {
-		          File selectedFilePath = fileChooser.getSelectedFile();
-		          rule2.setText((selectedFilePath.getPath()));
-		        }
-			}
-		});
-		rule2Browse.setBounds(325, 271, 89, 23);
-		hashcat.add(rule2Browse);
-		
-		JLabel lblRule_2 = new JLabel("Rule 3:");
-		lblRule_2.setBounds(5, 304, 52, 22);
-		hashcat.add(lblRule_2);
-		
-		rule3 = new JTextField();
-		rule3.setColumns(10);
-		rule3.setBounds(67, 304, 248, 22);
-		hashcat.add(rule3);
-		
-		JButton rule3Browse = new JButton("Browse");
-		rule3Browse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser fileChooser = new JFileChooser();
-				File loc = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-				fileChooser.setCurrentDirectory(loc);
-		        int returnValue = fileChooser.showOpenDialog(null);
-		        if (returnValue == JFileChooser.APPROVE_OPTION) {
-		          File selectedFilePath = fileChooser.getSelectedFile();
-		          rule3.setText((selectedFilePath.getPath()));
-		        }
-			}
-		});
 		rule3Browse.setBounds(325, 304, 89, 23);
 		hashcat.add(rule3Browse);
 		
-		JLabel lblRule_3 = new JLabel("Rule 4:");
+		JLabel lblRule_3 = new JLabel("Rule 2:");
 		lblRule_3.setBounds(5, 337, 52, 22);
 		hashcat.add(lblRule_3);
 		
-		rule4 = new JTextField();
-		rule4.setColumns(10);
-		rule4.setBounds(67, 337, 248, 22);
-		hashcat.add(rule4);
+		rule2 = new JTextField();
+		rule2.setColumns(10);
+		rule2.setBounds(67, 337, 248, 22);
+		hashcat.add(rule2);
 		
 		JButton rule4Browse = new JButton("Browse");
 		rule4Browse.addActionListener(new ActionListener() {
@@ -417,7 +367,7 @@ public class main {
 		        int returnValue = fileChooser.showOpenDialog(null);
 		        if (returnValue == JFileChooser.APPROVE_OPTION) {
 		          File selectedFilePath = fileChooser.getSelectedFile();
-		          rule4.setText((selectedFilePath.getPath()));
+		          rule2.setText((selectedFilePath.getPath()));
 		        }
 			}
 		});
@@ -593,15 +543,29 @@ public class main {
 				String attackmode = "";
 				String client = "";
 				
-				stringHashFile = hashFile.getText();
-				stringOutputFile = outputhFile.getText();
-				stringWordlist1 = wordlist1.getText();
-				stringWordlist2 = wordlist2.getText();
-				stringWordlist3 = wordlist3.getText();
-				stringRule1 = rule1.getText();
-				stringRule2 = rule2.getText();
-				stringRule3 = rule3.getText();
-				stringRule4 = rule4.getText();
+				stringHashFile = " " + hashFile.getText();
+				stringOutputFile = " " + outputhFile.getText();
+				
+				//Gets wordlist DIRs
+				if(wordlist1.getText().length() > 0){
+				stringWordlist1 = " " + wordlist1.getText();
+				}
+				if(wordlist2.getText().length() > 0){
+				stringWordlist2 = " " + wordlist2.getText();
+				}
+				if(wordlist3.getText().length() > 0){
+				stringWordlist3 = " " + wordlist3.getText();
+				}
+				if(wordlist4.getText().length() > 0){
+				stringWordlist4 = " " + wordlist4.getText();
+				}
+				if(wordlist5.getText().length() > 0){
+				stringWordlist5 = " " + wordlist5.getText();
+				}
+				
+				
+				stringRule1 = " " + rule1.getText();
+				stringRule2 = " " + rule2.getText();
 				stringSeparator = separatorField.getText();
 				stringmode = mode.getSelectedItem().toString();
 				stringOutputFormat = outputFormat.getSelectedItem().toString();
@@ -946,14 +910,23 @@ public class main {
 				}			
 				
 				
+				//-o argument strings
+				String dirmod0 = " -o" + stringOutputFile + stringHashFile + stringWordlist1 + stringWordlist2 + stringWordlist3 + stringWordlist4 + stringWordlist5; 
+				String dirmod3 = " -o" + stringOutputFile + " " + stringHashFile + " " + stringMask;
+				
+				//Rules
+				if(rule1.getText().length() > 0 || rule2.getText().length() > 0){
+					dirmod0 = dirmod0 + " -r" + stringRule1 + stringRule2;
+				}
+				
 				
 				//Creates and sets command string
 				if(attackmode == "0"){
-					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode  +" -o " + stringOutputFile + " " + stringHashFile + " " + stringWordlist1 + " " + stringWordlist2 + " " + stringWordlist3 + " -r" + stringRule1 + " " + stringRule2 + " " + stringRule3 + " " + stringRule4 + " " ;
+					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode  + dirmod0;
 				}
 				
 				if(attackmode == "3"){
-					stringCommand = "hashcat-" + client + " " + "-m " + hashcode + " " + "-a " + attackmode + " -o " + stringOutputFile + " " + stringHashFile + " " + stringMask;
+					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode + dirmod3;
 				}				
 				
 				commandOut.setText(stringCommand);
@@ -979,6 +952,32 @@ public class main {
 		JLabel lblClient = new JLabel("Client:");
 		lblClient.setBounds(633, 15, 46, 14);
 		hashcat.add(lblClient);
+		
+		JLabel lblWordlist_3 = new JLabel("Wordlist 4:");
+		lblWordlist_3.setBounds(5, 212, 52, 22);
+		hashcat.add(lblWordlist_3);
+		
+		wordlist4 = new JTextField();
+		wordlist4.setColumns(10);
+		wordlist4.setBounds(67, 212, 248, 22);
+		hashcat.add(wordlist4);
+		
+		JButton button_1 = new JButton("Browse");
+		button_1.setBounds(325, 212, 89, 23);
+		hashcat.add(button_1);
+		
+		JLabel lblWordlist_4 = new JLabel("Wordlist 5:");
+		lblWordlist_4.setBounds(5, 245, 52, 22);
+		hashcat.add(lblWordlist_4);
+		
+		wordlist5 = new JTextField();
+		wordlist5.setColumns(10);
+		wordlist5.setBounds(67, 245, 248, 22);
+		hashcat.add(wordlist5);
+		
+		JButton button_2 = new JButton("Browse");
+		button_2.setBounds(325, 245, 89, 23);
+		hashcat.add(button_2);
 		
 		}
 	}
