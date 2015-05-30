@@ -75,7 +75,6 @@ public class main {
 	private JTextField rule1;
 	private JTextField rule2;
 	private JTextField outputhFile;
-	private JTextField commandOut;
 	private JTextField mask;
 	private JTextField wordlist4;
 	private JTextField wordlist5;
@@ -495,11 +494,9 @@ public class main {
 		cli.setBounds(674, 12, 75, 20);
 		hashcat.add(cli);
 		
-		commandOut = new JTextField();
-		commandOut.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		commandOut.setBounds(10, 504, 739, 33);
+		JLabel commandOut = new JLabel("");
+		commandOut.setBounds(10, 503, 739, 40);
 		hashcat.add(commandOut);
-		commandOut.setColumns(10);
 		
 		JButton CopyToClipboard = new JButton("Copy To Clipboard");
 		CopyToClipboard.addActionListener(new ActionListener() {
@@ -914,6 +911,7 @@ public class main {
 				String dirmod0 = " -o" + stringOutputFile + stringHashFile + stringWordlist1 + stringWordlist2 + stringWordlist3 + stringWordlist4 + stringWordlist5; 
 				String dirmod3 = " -o" + stringOutputFile + " " + stringHashFile + " " + stringMask;
 				
+				
 				//Rules
 				if(rule1.getText().length() > 0 || rule2.getText().length() > 0){
 					dirmod0 = dirmod0 + " -r" + stringRule1 + stringRule2;
@@ -977,7 +975,8 @@ public class main {
 		
 		JButton button_2 = new JButton("Browse");
 		button_2.setBounds(325, 245, 89, 23);
-		hashcat.add(button_2);
+		hashcat.add(button_2);		
+		
 		
 		}
 	}
