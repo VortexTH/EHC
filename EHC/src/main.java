@@ -36,6 +36,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Color;
 
 
 
@@ -63,13 +64,16 @@ public class main {
 	public boolean icm = false;
 	public String stringMask = "";
 	public String stringcli = "";
+	public String stringThreads = "";
+	public String stringSegmentSize = "";
+	public String stringHashcatType = "";
+	public String stringGpuTempAbort = "";
+	public String stringGpuAccel = "";
 
 	private JFrame frmEhcV;
 	private JTextField hashFile;
-	private JTextField separatorField;
+	private JTextField threadsfield;
 	private JTextField wordlist1;
-	private JTextField lengthmin;
-	private JTextField lengthmax;
 	private JTextField wordlist2;
 	private JTextField wordlist3;
 	private JTextField rule1;
@@ -78,6 +82,8 @@ public class main {
 	private JTextField mask;
 	private JTextField wordlist4;
 	private JTextField wordlist5;
+	private JTextField segmentsizefield;
+	private JTextField gputempfield;
 
 	/**
 	 * Launch the application.
@@ -128,10 +134,6 @@ public class main {
 		tabbedPane.addTab("HashCat", null, hashcat, null);
 		hashcat.setLayout(null);
 		
-		JLabel lblLength = new JLabel("Length:");
-		lblLength.setBounds(454, 108, 37, 22);
-		hashcat.add(lblLength);
-		
 		JLabel lblHashFile = new JLabel("Hash File:");
 		lblHashFile.setBounds(10, 11, 47, 22);
 		hashcat.add(lblHashFile);
@@ -157,14 +159,14 @@ public class main {
 		InputFileBrowse.setBounds(555, 11, 71, 23);
 		hashcat.add(InputFileBrowse);
 		
-		JLabel lblSeperator = new JLabel("Separator:");
-		lblSeperator.setBounds(5, 44, 52, 22);
+		JLabel lblSeperator = new JLabel("Threads:");
+		lblSeperator.setBounds(434, 114, 52, 22);
 		hashcat.add(lblSeperator);
 		
-		separatorField = new JTextField();
-		separatorField.setBounds(67, 44, 68, 22);
-		hashcat.add(separatorField);
-		separatorField.setColumns(10);
+		threadsfield = new JTextField();
+		threadsfield.setBounds(512, 114, 68, 22);
+		hashcat.add(threadsfield);
+		threadsfield.setColumns(10);
 		
 		JLabel lblMode = new JLabel("Mode:");
 		lblMode.setBounds(145, 44, 47, 22);
@@ -218,32 +220,6 @@ public class main {
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(424, 168, 38, 12);
 		hashcat.add(separator_2);
-		
-		lengthmin = new JTextField();
-		lengthmin.setBounds(521, 108, 47, 23);
-		hashcat.add(lengthmin);
-		lengthmin.setColumns(10);
-		
-		JLabel label = new JLabel("-");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		label.setBounds(580, 113, 17, 12);
-		hashcat.add(label);
-		
-		lengthmax = new JTextField();
-		lengthmax.setColumns(10);
-		lengthmax.setBounds(607, 108, 47, 23);
-		hashcat.add(lengthmax);
-		
-		JCheckBox incrementMode = new JCheckBox("Increment mode");
-		incrementMode.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				
-				icm = true;
-				
-			}
-		});
-		incrementMode.setBounds(454, 137, 129, 20);
-		hashcat.add(incrementMode);
 		
 		JLabel lblWordlist_1 = new JLabel("Wordlist 2:");
 		lblWordlist_1.setBounds(5, 147, 52, 22);
@@ -303,12 +279,12 @@ public class main {
 		separator_4.setBounds(0, 96, 57, 12);
 		hashcat.add(separator_4);
 		
-		JLabel lblLength_1 = new JLabel("Length");
-		lblLength_1.setBounds(463, 86, 37, 22);
-		hashcat.add(lblLength_1);
+		JLabel Performance = new JLabel("Performance");
+		Performance.setBounds(463, 86, 64, 22);
+		hashcat.add(Performance);
 		
 		JSeparator separator_5 = new JSeparator();
-		separator_5.setBounds(498, 96, 261, 12);
+		separator_5.setBounds(528, 96, 231, 12);
 		hashcat.add(separator_5);
 		
 		JSeparator separator_6 = new JSeparator();
@@ -511,20 +487,90 @@ public class main {
 		CopyToClipboard.setBounds(10, 554, 161, 23);
 		hashcat.add(CopyToClipboard);
 		
-		JCheckBox chckbxNoIncrementMode = new JCheckBox("no Increment mode");
-		chckbxNoIncrementMode.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				
-				icm = false;
-				
-			}
-		});
-		chckbxNoIncrementMode.setBounds(580, 137, 129, 20);
-		hashcat.add(chckbxNoIncrementMode);
-		
 		JPanel oclhashcat = new JPanel();
-		tabbedPane.addTab("oclHashCat", null, oclhashcat, null);
+		tabbedPane.addTab("oclHashcat Advanced Options", null, oclhashcat, null);
 		oclhashcat.setLayout(null);
+		
+		JLabel lblGpuAcceleration = new JLabel("GPU Acceleration:");
+		lblGpuAcceleration.setBounds(10, 11, 86, 14);
+		oclhashcat.add(lblGpuAcceleration);
+		
+		JComboBox gpuaccelerationbox = new JComboBox();
+		gpuaccelerationbox.setModel(new DefaultComboBoxModel(new String[] {"(none)", "1", "8", "40", "80", "160"}));
+		gpuaccelerationbox.setBounds(106, 8, 63, 20);
+		oclhashcat.add(gpuaccelerationbox);
+		
+		JLabel lblNewLabel = new JLabel("Gpu, Fanspeed, Temp warnings & triggers:");
+		lblNewLabel.setBounds(207, 11, 212, 14);
+		oclhashcat.add(lblNewLabel);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"On", "Off"}));
+		comboBox_1.setBounds(429, 8, 91, 20);
+		oclhashcat.add(comboBox_1);
+		
+		JLabel lblGpuTemperatureAbort = new JLabel("GPU Temperature abort at:");
+		lblGpuTemperatureAbort.setBounds(10, 84, 131, 14);
+		oclhashcat.add(lblGpuTemperatureAbort);
+		
+		gputempfield = new JTextField();
+		gputempfield.setBounds(145, 81, 86, 20);
+		oclhashcat.add(gputempfield);
+		gputempfield.setColumns(10);
+		
+		JLabel lblc = new JLabel("\u00B0C");
+		lblc.setBounds(235, 84, 46, 14);
+		oclhashcat.add(lblc);
+		
+		JLabel lblClient = new JLabel("Client:");
+		lblClient.setBounds(633, 15, 46, 14);
+		hashcat.add(lblClient);
+		
+		JLabel lblWordlist_3 = new JLabel("Wordlist 4:");
+		lblWordlist_3.setBounds(5, 212, 52, 22);
+		hashcat.add(lblWordlist_3);
+		
+		wordlist4 = new JTextField();
+		wordlist4.setColumns(10);
+		wordlist4.setBounds(67, 212, 248, 22);
+		hashcat.add(wordlist4);
+		
+		JButton button_1 = new JButton("Browse");
+		button_1.setBounds(325, 212, 89, 23);
+		hashcat.add(button_1);
+		
+		JLabel lblWordlist_4 = new JLabel("Wordlist 5:");
+		lblWordlist_4.setBounds(5, 245, 52, 22);
+		hashcat.add(lblWordlist_4);
+		
+		wordlist5 = new JTextField();
+		wordlist5.setColumns(10);
+		wordlist5.setBounds(67, 245, 248, 22);
+		hashcat.add(wordlist5);
+		
+		JButton button_2 = new JButton("Browse");
+		button_2.setBounds(325, 245, 89, 23);
+		hashcat.add(button_2);		
+		
+		JLabel lblSegmentSize = new JLabel("Segment size:");
+		lblSegmentSize.setBounds(434, 143, 67, 14);
+		hashcat.add(lblSegmentSize);
+		
+		segmentsizefield = new JTextField();
+		segmentsizefield.setBounds(512, 140, 68, 20);
+		hashcat.add(segmentsizefield);
+		segmentsizefield.setColumns(10);
+		
+		JLabel lblMb = new JLabel("MB");
+		lblMb.setBounds(582, 143, 25, 14);
+		hashcat.add(lblMb);
+		
+		JComboBox hashcattypechooser = new JComboBox();
+		hashcattypechooser.setBackground(Color.WHITE);
+		hashcattypechooser.setForeground(Color.RED);
+		hashcattypechooser.setModel(new DefaultComboBoxModel(new String[] {"Hashcat", "oclHashcat"}));
+		hashcattypechooser.setBounds(10, 45, 125, 21);
+		hashcat.add(hashcattypechooser);		
 		
 		JComboBox outputFormat = new JComboBox();
 		outputFormat.setMaximumRowCount(12);
@@ -539,6 +585,11 @@ public class main {
 				String hashcode = "";
 				String attackmode = "";
 				String client = "";
+				String threads = "";
+				String segments = "";
+				String gpuAcceleration = "";
+				String gpuAbortTemp = "";
+				String oclClient = "";
 				
 				stringHashFile = " " + hashFile.getText();
 				stringOutputFile = " " + outputhFile.getText();
@@ -563,15 +614,45 @@ public class main {
 				
 				stringRule1 = " " + rule1.getText();
 				stringRule2 = " " + rule2.getText();
-				stringSeparator = separatorField.getText();
+				stringSeparator = threadsfield.getText();
 				stringmode = mode.getSelectedItem().toString();
 				stringOutputFormat = outputFormat.getSelectedItem().toString();
 				stringHashType = hashType.getSelectedItem().toString();
-				stringpassmax = lengthmax.getText();
-				stringpassmin = lengthmin.getText();
 				stringcli = cli.getSelectedItem().toString();
 				stringOutputFile = outputhFile.getText();
 				stringMask = mask.getText();
+				stringThreads = threadsfield.getText();
+				stringSegmentSize = segmentsizefield.getText();
+				stringGpuTempAbort = gputempfield.getText();
+				stringGpuAccel = gpuaccelerationbox.getSelectedItem().toString();
+				
+				//distinguishes between oclhashcat and CPU-based hashcat
+				stringHashcatType = hashcattypechooser.getSelectedItem().toString();		
+				
+				
+				//Sets GPU abort Temp for oclHashcat
+				if(gputempfield.getText().length() > 0){
+					gpuAbortTemp = " --gpu-temp-abort=" + stringGpuTempAbort;
+				}
+				
+				
+				//Sets GPU tuning options
+				if(gpuaccelerationbox.getSelectedItem().toString() != "(none)"){
+				    gpuAcceleration = " --gpu-accel=" + stringGpuAccel;
+				}
+				
+				
+				//Sets size of segment to cache from wordfile
+				if(segmentsizefield.getText().length() > 0){
+					segments = " --segment-size=" + stringSegmentSize;
+				}
+				
+				
+				//Sets number of concurrent threads
+				if(threadsfield.getText().length() > 0){
+					threads = " --threads=" + stringThreads;
+				}				
+				
 				
 				//Sets attack mode
 				if(stringmode == "Dictionary"){
@@ -580,22 +661,20 @@ public class main {
 				
 				else if(stringmode == "Masked"){
 					attackmode = "3";
-				}
-				
-				
+				}				
 				
 				
 				//Sets client type
 				if(stringcli == "cli64"){
 					client = "cli64	";
+					oclClient = "64";
 				}
 				
 				else if(stringcli == "cli32"){
 					client = "cli32";
+					oclClient = "32";
 				}
-				
-				
-				
+												
 				
 				//sets increment flag
 				if(icm = true){
@@ -914,20 +993,42 @@ public class main {
 				
 				//Rules
 				if(rule1.getText().length() > 0 || rule2.getText().length() > 0){
-					dirmod0 = dirmod0 + " -r" + stringRule1 + stringRule2;
+					dirmod0 = dirmod0 + " -r" + stringRule1 +stringRule2;
 				}
+							
 				
+				
+				//determines hashcat release in this case Hashcat CPU-based
+				if (stringHashcatType == "Hashcat"){
 				
 				//Creates and sets command string
 				if(attackmode == "0"){
-					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode  + dirmod0;
+					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode + threads + segments + dirmod0;
 				}
 				
 				if(attackmode == "3"){
-					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode + dirmod3;
+					stringCommand = "hashcat-" + client + " -m " + hashcode + " -a " + attackmode + threads + segments + dirmod3;
 				}				
 				
-				commandOut.setText(stringCommand);
+			}
+				
+				
+				
+				//determines Hashcat release in this case oclHashcat
+				else if (stringHashcatType == "oclHashcat"){
+					
+					//Creates and sets command string
+					if(attackmode == "0"){
+						stringCommand = "cudahashcat" + oclClient + " -m " + hashcode + " -a " + attackmode + threads + segments + gpuAcceleration + gpuAbortTemp + dirmod0;
+					}
+					
+					if(attackmode == "3"){
+						stringCommand = "cudahashcat" + oclClient + " -m " + hashcode + " -a " + attackmode + threads + segments + gpuAcceleration + gpuAbortTemp + dirmod3;
+					}				
+					
+					
+				}
+				
 				
 				
 				
@@ -947,36 +1048,6 @@ public class main {
 		engineer.setBounds(443, 317, 286, 63);
 		hashcat.add(engineer);
 						
-		JLabel lblClient = new JLabel("Client:");
-		lblClient.setBounds(633, 15, 46, 14);
-		hashcat.add(lblClient);
-		
-		JLabel lblWordlist_3 = new JLabel("Wordlist 4:");
-		lblWordlist_3.setBounds(5, 212, 52, 22);
-		hashcat.add(lblWordlist_3);
-		
-		wordlist4 = new JTextField();
-		wordlist4.setColumns(10);
-		wordlist4.setBounds(67, 212, 248, 22);
-		hashcat.add(wordlist4);
-		
-		JButton button_1 = new JButton("Browse");
-		button_1.setBounds(325, 212, 89, 23);
-		hashcat.add(button_1);
-		
-		JLabel lblWordlist_4 = new JLabel("Wordlist 5:");
-		lblWordlist_4.setBounds(5, 245, 52, 22);
-		hashcat.add(lblWordlist_4);
-		
-		wordlist5 = new JTextField();
-		wordlist5.setColumns(10);
-		wordlist5.setBounds(67, 245, 248, 22);
-		hashcat.add(wordlist5);
-		
-		JButton button_2 = new JButton("Browse");
-		button_2.setBounds(325, 245, 89, 23);
-		hashcat.add(button_2);		
-		
 		
 		}
 	}
