@@ -1,5 +1,5 @@
 # EHC
-Java based HC GUI tool
+Java based Hashcat graphical interface front-end.
 
-Bringing a cross-platform, full functionality GUI to the renown HashCat and oclHashCat
-http://hashcat.net/hashcat/
+Bringing a cross-platform, full functionality GUI to the renown command-line based HashCat and oclHashCat
+get Hashcat here: http://hashcat.net/hashcat/
